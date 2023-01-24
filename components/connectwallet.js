@@ -33,12 +33,12 @@ export default function Connectwallet() {
             Connect Wallet
           </div>
         ) : (
-          <div className={`${styles.adaWrapper}`}>
-            <span className={`${styles.ada}`}> ₳ {parseLovelace()}</span>
+          <div className={styles.adaWrapper}>
+            <span className={styles.ada}> ₳ {parseLovelace()}</span>
           </div>
         )}
         {showMenu ? (
-          <div className={`${styles.menuWrapper}`}>
+          <div className={styles.menuWrapper}>
             {!connected ? (
               wallets.map((w, i) => {
                 return (

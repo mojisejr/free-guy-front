@@ -1,25 +1,32 @@
 import style from "../styles/title.module.css";
 import MintingForm from "../components/minter";
 import { useWallet } from "@meshsdk/react";
+import { motion } from "framer-motion";
 
 export default function Title() {
   const { connected } = useWallet();
   return (
-    <div>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{
+        scale: 1,
+      }}
+      transition={{ delay: 0.2, duration: 0.6 }}
+    >
       <div className={style.container}>
         <div className={style.imagecontainner}>
           <img src="main.png" width="100%" className={style.image}></img>
         </div>
-        <MainDialogBox />
+        {connected ? <MintingForm /> : <MainDialogBox />}
       </div>
       <MainDialogContent />
-    </div>
+    </motion.div>
   );
 }
 
 function MainDialogBox() {
   return (
-    <div className={`${style.mainDialogContainer}`}>
+    <div className={style.mainDialogContainer}>
       <div className={`nes-balloon from-left`}>
         <p>
           1,111 coolest unique pixel art profile pictures on Adaverse. NFT that

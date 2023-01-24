@@ -37,10 +37,10 @@ export default function Footer() {
 
 function FooterTitle() {
   return (
-    <div className={`${styles.titleContainer}`}>
-      <div className={`${styles.msg1}`}>FREQUENTLY</div>
-      <div className={`${styles.msg2}`}>ASKED</div>
-      <div className={`${styles.msg3}`}>QUESTIONS</div>
+    <div className={styles.titleContainer}>
+      <div className={styles.msg1}>FREQUENTLY</div>
+      <div className={styles.msg2}>ASKED</div>
+      <div className={styles.msg3}>QUESTIONS</div>
     </div>
   );
 }
@@ -48,9 +48,9 @@ function FooterTitle() {
 function MsgRight({ data, showImg }) {
   const { title, img, msg } = data;
   return (
-    <div className={`${styles.msgWrapper}`}>
+    <div className={styles.msgWrapper}>
       {showImg ? <img src={img} width={150}></img> : null}
-      <div className={`nes-balloon from-left ${styles.msg}`}>
+      <div className={`nes-balloon from-left`} style={{ display: "flex" }}>
         <p>
           <span style={{ fontWeight: "bold" }}>{title} </span>
           <span style={{ color: "orangered" }}>{msg}</span>
@@ -63,15 +63,15 @@ function MsgRight({ data, showImg }) {
 function MsgLeft({ data, showImg }) {
   const { title, img, msg } = data;
   return (
-    <div className={`${styles.msgWrapper}`}>
-      <div className={`nes-balloon from-right ${styles.msg}`}>
+    <div className={styles.msgWrapper}>
+      <div className={`nes-balloon from-right`} style={{ display: "flex" }}>
         <p>
           <span style={{ fontWeight: "bold" }}>{title} </span>{" "}
           <span style={{ color: "orangered" }}>{msg}</span>
         </p>
       </div>
       {showImg ? (
-        <img className={`${styles.flip}`} src={img} width={150}></img>
+        <img className={styles.flip} src={img} width={150}></img>
       ) : null}
     </div>
   );

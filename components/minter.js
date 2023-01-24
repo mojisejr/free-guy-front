@@ -41,6 +41,7 @@ export default function MintingForm() {
     <div>
       <div className={`${styles.container}`}>
         <form className={`${styles.form}`} onSubmit={(e) => handleMinting(e)}>
+          <label htmlFor="toMint">Mint</label>
           <input
             id="toMint"
             className={`nes-input`}
