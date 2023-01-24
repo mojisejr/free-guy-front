@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+.connectwalletfont {
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  font-weight: 530;
+  padding: auto;
+}
+
+.nesBtn {
+  font-size: 10px;
+}
+
+.adaWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  text-align: center;
+  box-shadow: 2px 2px 0px black;
+  border-radius: 3px;
+}
+
+.menuWrapper {
+  position: absolute;
+}
+
+.ada {
+  padding: 10px;
+  font-size: 20px;
+}

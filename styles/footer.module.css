@@ -1,0 +1,69 @@
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgWrapper {
+  display: flex;
+}
+
+.msg {
+  display: flex;
+}
+
+.flip {
+  transform: scaleX(-1);
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: flex-end;
+  align-items: flex-end;
+  padding-right: 4%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 35px;
+  letter-spacing: 2px;
+}
+
+.msg1 {
+  font-size: 20px;
+}
+
+.msg2 {
+  font-size: 40px;
+  font-weight: bold;
+  color: orangered;
+}
+
+.msg3 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+@media only screen and (min-width: 1023px) {
+  .msg1 {
+    font-size: 30px;
+  }
+  .msg2 {
+    font-size: 50px;
+    font-weight: bold;
+    color: orangered;
+  }
+
+  .msg3 {
+    font-weight: bold;
+    font-size: 40px;
+  }
+  .titleContainer {
+    line-height: 45px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
