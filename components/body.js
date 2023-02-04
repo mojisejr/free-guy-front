@@ -4,11 +4,11 @@ import { fBanner } from "../framer/banner.framer";
 
 const { animate, initial, transition } = fBanner;
 
-export default function Body() {
+export default function Body({ props }) {
   return (
     <div>
       <Banner />
-      <Title />
+      <Title props={props} />
       <Banner />
     </div>
   );

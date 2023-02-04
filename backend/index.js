@@ -16,21 +16,47 @@ export async function post(route, body = {}) {
     });
 }
 
-export async function createTransaction(recipientAddress, utxos) {
-  return await post(`create-mining-transaction`, { recipientAddress, utxos });
+export async function get(route) {
+  return await instance
+    .get(`${route}`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => {
+      throw error;
+    });
 }
 
-export async function signTransaction(tokenId, signedTx, originalMetadata) {
-  return await post(`sign-transaction`, {
-    tokenId,
-    signedTx,
-    originalMetadata,
+export async function createTransaction(recipientAddress, utxos, amount) {
+  return await post(`create-mining-transaction`, {
+    recipientAddress,
+    utxos,
+    amount,
   });
 }
 
-// export async function signTransaction(tokenId, signedTx) {
-//   return await post(`sign-transaction`, {
-//     tokenId,
-//     signedTx,
-//   });
-// }
+export async function signTransaction(_oid, signedTx) {
+  return await post(`sign-transaction`, {
+    _oid,
+    signedTx,
+  });
+}
+
+export async function markUsedPass(fingerprint, redeemer) {
+  return await post(`mark-used-pass`, {
+    fingerprint,
+    redeemer,
+  });
+}
+
+export async function markAsMinted(tokenIds, hash, minter) {
+  return await post(`mark-minted`, {
+    tokenIds,
+    hash,
+    minter,
+  });
+}
+
+export async function getAllPasses() {
+  return await get(`all-pass`);
+}

@@ -3,7 +3,7 @@ import MintingForm from "../components/minter";
 import { useWallet } from "@meshsdk/react";
 import { motion } from "framer-motion";
 
-export default function Title() {
+export default function Title({ props }) {
   const { connected } = useWallet();
   return (
     <motion.div
@@ -17,7 +17,7 @@ export default function Title() {
         <div className={style.imagecontainner}>
           <img src="main.png" width="100%" className={style.image}></img>
         </div>
-        {connected ? <MintingForm /> : <MainDialogBox />}
+        {connected ? <MintingForm props={props} /> : <MainDialogBox />}
       </div>
       <MainDialogContent />
     </motion.div>
