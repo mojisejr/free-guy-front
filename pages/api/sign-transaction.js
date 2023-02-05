@@ -1,29 +1,23 @@
-import { AppWallet, Transaction, KoiosProvider } from "@meshsdk/core";
-import { getMetadataOf } from "./get-token-meta";
+import { Transaction } from "@meshsdk/core";
+import { getMetadataOf, markAsCompleted } from "./get-token-meta";
+import { getAppWallet } from "./utils/app-wallet";
 
 export default async function handler(req, res) {
-  const tokenId = req.body.tokenId;
+  const _oid = req.body._oid;
   const signedTx = req.body.signedTx;
 
-  const blockchainProvider = new KoiosProvider("api");
+  const appWallet = getAppWallet();
 
-  const appWallet = new AppWallet({
-    networkId: 1,
-    fetcher: blockchainProvider,
-    submitter: blockchainProvider,
-    key: {
-      type: "cli",
-      payment: process.env.APPKEY,
-    },
-  });
-
-  const metadata = await getMetadataOf(tokenId);
+  const metadata = await getMetadataOf(_oid);
 
   const signedOriginalTx = Transaction.writeMetadata(
     signedTx,
     metadata.og_meta,
+    //need it when make a multi-sig transaction
     "SHELLEY"
   );
+
+  await markAsCompleted(_oid, signedTx);
 
   const appWalletSignedTx = await appWallet.signTx(signedOriginalTx, true);
 

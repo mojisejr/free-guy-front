@@ -2,10 +2,12 @@ import Connectwallet from "./connectwallet";
 import styles from "../styles/header.module.css";
 import { motion } from "framer-motion";
 import { fHead } from "../framer/header.framer";
+import { useAppContext } from "../contexts";
 
 const { logo, connectBtn } = fHead;
 
-export default function Header() {
+export default function Header({ props }) {
+  const { info } = useAppContext();
   return (
     <motion.div className={styles.container}>
       <motion.div
@@ -23,7 +25,7 @@ export default function Header() {
         whileHover={connectBtn.hover}
         className={styles.connectwallet}
       >
-        <Connectwallet />
+        {props.pause ? null : <Connectwallet />}
       </motion.div>
     </motion.div>
   );
